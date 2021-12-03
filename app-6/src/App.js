@@ -1,25 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import React,{useState} from "react";
+import "./App.css";
+import Todo from "./components/todo/todo";
 function App() {
+  const [list, setList] = useState([])
+  const [text,setText] = useState(``)
+  const inputHandler= (event) =>{
+    setText(event.target.value)
+  }
+  const submitHandler= () =>{
+    setList(list.concat(<Todo text={text}/>))
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <>
+    <h1>My to-do list:</h1>
+    <input onChange={inputHandler}/>
+    <button onClick={submitHandler}>submit</button>
+    {list}
+  </>
   );
 }
 

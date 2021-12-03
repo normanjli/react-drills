@@ -1,25 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const [uname, setUname] = useState(``)
+  const [pass, setPass] = useState(``)
+  const unameHandle = (event)=>{
+    setUname(event.target.value)
+  }
+  const passHandle = (event)=>{
+    setPass(event.target.value)
+  }
+  const submitHandler = () =>{
+    alert(`Username: ${uname} Password: ${pass}`)
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <input onChange={unameHandle}></input>
+    <input onChange={passHandle}></input>
+    <button onClick={submitHandler}>submit</button>
+    </>
   );
 }
 
